@@ -31,13 +31,14 @@
 					<artifactId>jgitflow-maven-plugin</artifactId>
 					<version>1.0-m5.1</version>
 					<configuration>
-						<pushReleases>true</pushReleases>
+						<pushReleases>false</pushReleases>
 						<keepBranch>false</keepBranch>
 						<autoVersionSubmodules>true</autoVersionSubmodules>
 						<allowUntracked>true</allowUntracked>
 						<pullDevelop>true</pullDevelop>
 						<pullMaster>true</pullMaster>
 						<allowSnapshots>true</allowSnapshots>
+						<noDeploy>true</noDeploy>
 						<flowInitContext>
 							<masterBranchName>master</masterBranchName>
 							<developBranchName>develop</developBranchName>
