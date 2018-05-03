@@ -3,6 +3,7 @@
 *.war
 *.ear
 *.class
+**/dependency-reduced-pom.xml
 
 # eclipse specific git ignore
 *.pydevproject
