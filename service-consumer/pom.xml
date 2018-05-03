@@ -7,13 +7,12 @@
 		<version>1.0</version>
 	</parent>
 	
-	<artifactId>service-provider</artifactId>
+	<artifactId>service-consumer</artifactId>
 	<packaging>jar</packaging>
-	<name>service-provider</name>
+	<name>service-consumer</name>
 	<url>http://maven.apache.org</url>
 
 	<dependencies>
-	
 		<dependency>
 			<groupId>com.sanjiv.zk.samples</groupId>
 			<artifactId>zk-utils</artifactId>
@@ -34,6 +33,7 @@
 			<version>3.3.0</version>
 		</dependency>
 	 -->
+
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-server</artifactId>
@@ -67,7 +67,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>service-provider</finalName>
+		<finalName>service-consumer</finalName>
 		<plugins>
 		
 			<plugin>
@@ -109,7 +109,7 @@
 									<!-- implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" /> -->
 								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
 									<manifestEntries>
-										<Main-Class>com.sanjiv.samples.serviceprovider.App</Main-Class>
+										<Main-Class>com.sanjiv.samples.serviceconsumer.App</Main-Class>
 									</manifestEntries>
 								</transformer>
 							</transformers>

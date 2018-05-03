@@ -1,4 +1,4 @@
-package com.macys.sanjiv.samples;
+package com.sanjiv.samples.serviceconsumer;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
