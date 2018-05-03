@@ -29,10 +29,9 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
-  
   
 	<modules>
+		<module>zk-utils</module>
 		<module>service-provider</module>
 		<module>service-consumer</module>
 	</modules>

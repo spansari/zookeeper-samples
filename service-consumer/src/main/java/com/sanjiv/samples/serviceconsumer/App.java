@@ -34,9 +34,6 @@ public class App extends ResourceConfig {
         String servicePackages = Manager.class.getPackage().getName();
         jerseyServlet.setInitParameter("jersey.config.server.provider.packages",servicePackages);
         
-        
-        System.out.println("Manager started on port:"+port);
-        
         try {
             jettyServer.start();
             jettyServer.join();
