@@ -34,6 +34,12 @@
 		    <artifactId>curator-x-discovery</artifactId>
 		    <version>2.5.0</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.curator</groupId>
+		    <artifactId>curator-test</artifactId>
+		    <version>2.5.0</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
@@ -68,11 +74,18 @@
 	</dependencies>
 
 	<build>
+		<finalName>service-provider</finalName>
 		<plugins>
+		
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
-				<version>1.6</version>
+				<version>2.3</version>
 				<configuration>
 					<createDependencyReducedPom>true</createDependencyReducedPom>
 					<filters>
@@ -95,8 +108,8 @@
 						</goals>
 						<configuration>
 							<transformers>
-								<transformer
-									implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+								<!-- <transformer -->
+									<!-- implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" /> -->
 								<transformer
 									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
 									<manifestEntries>
