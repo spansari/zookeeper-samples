@@ -31,7 +31,7 @@
 					<artifactId>jgitflow-maven-plugin</artifactId>
 					<version>1.0-m5.1</version>
 					<configuration>
-						<pushReleases>false</pushReleases>
+						<pushReleases>true</pushReleases>
 						<keepBranch>false</keepBranch>
 						<autoVersionSubmodules>true</autoVersionSubmodules>
 						<allowUntracked>true</allowUntracked>
