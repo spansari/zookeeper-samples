@@ -23,6 +23,10 @@ public enum ServiceProviderUtil {
 
     private static Map<String, ServiceProvider> providers = new HashMap();
 
+    private void ServiceProviderUtil() {
+	init();
+    }
+    
     private void init() {
 	curatorFramework = CuratorFrameworkFactory.newClient(ZK_CONNECT_STRING, new RetryNTimes(5, 1000));
 	curatorFramework.start();
@@ -36,9 +40,6 @@ public enum ServiceProviderUtil {
     }
 
     public String getServiceAddress(String serviceName) {
-	if (null == curatorFramework) {
-	    init();
-	}
 	String address = "";
 	try {
 
