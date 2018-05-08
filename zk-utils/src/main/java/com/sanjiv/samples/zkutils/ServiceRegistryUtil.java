@@ -15,16 +15,15 @@ public enum ServiceRegistryUtil {
     
     private static CuratorFramework curatorFramework = null;
     
+    private ServiceRegistryUtil() {
+	init();
+    }
     private void init() {
 	curatorFramework = CuratorFrameworkFactory.newClient(ZK_CONNECT_STRING, new RetryNTimes(5, 1000));
 	curatorFramework.start();
     }
 
     public void register(String serviceName, String serviceHost, int servicePort) {
-	if (null == curatorFramework) {
-	    init();
-	}
-
 	ServiceInstance<Object> serviceInstance;
 	try {
 	    serviceInstance = ServiceInstance.<Object>builder()

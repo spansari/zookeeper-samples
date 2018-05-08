@@ -1,6 +1,8 @@
 "# zookeeper-samples" 
 
 Dependency:  Install zookeeper and start the on the default port:2181
+https://zooesblog.wordpress.com/2016/03/15/installing-apache-zookeeper-and-kafka-as-windows-service/
+
 
 Build the project: mvn clean install
 
@@ -17,7 +19,7 @@ Start Service-Consumer :
   Open browser and point to :
   localhost:8000/api/delegate
   
-  Open another tab and point to sam url: 
+  Open another tab and point to same url: 
   localhost:8000/api/delegate
   
   
