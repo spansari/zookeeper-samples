@@ -13,12 +13,14 @@ public enum ServiceRegistryUtil {
     private static final String ZK_CONNECT_STRING = "localhost:2181";
     private static final String BASE_PATH = "service-registry";
     
-    private static CuratorFramework curatorFramework = null;
+    private CuratorFramework curatorFramework = null;
     
     private ServiceRegistryUtil() {
+	System.out.println("Constructor...");
 	init();
     }
     private void init() {
+	System.out.println("init ...");
 	curatorFramework = CuratorFrameworkFactory.newClient(ZK_CONNECT_STRING, new RetryNTimes(5, 1000));
 	curatorFramework.start();
     }
@@ -44,5 +46,9 @@ public enum ServiceRegistryUtil {
 	}
     }
     
+    
+    public static void main(String[] args) {
+	ServiceRegistryUtil.instance.register("W1", "localhost", 100);
+    }
   
 }

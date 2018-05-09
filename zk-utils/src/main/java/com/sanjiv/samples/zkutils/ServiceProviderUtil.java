@@ -16,24 +16,25 @@ public enum ServiceProviderUtil {
     private static final String ZK_CONNECT_STRING = "localhost:2181";
     private static final String BASE_PATH = "service-registry";
     
-    
-    private static CuratorFramework curatorFramework = null;
+    private CuratorFramework curatorFramework = null;
 
-    private static ServiceDiscovery<Object> serviceDiscovery = null;
+    private ServiceDiscovery<Object> serviceDiscovery = null;
 
-    private static Map<String, ServiceProvider> providers = new HashMap();
+    private Map<String, ServiceProvider> providers = new HashMap();
 
-    private void ServiceProviderUtil() {
+    private ServiceProviderUtil() {
 	init();
     }
     
     private void init() {
+	System.out.println("init()...");
 	curatorFramework = CuratorFrameworkFactory.newClient(ZK_CONNECT_STRING, new RetryNTimes(5, 1000));
 	curatorFramework.start();
 	serviceDiscovery = ServiceDiscoveryBuilder.builder(Object.class).client(curatorFramework).basePath(BASE_PATH)
 		.build();
 	try {
 	    serviceDiscovery.start();
+	    System.out.println("service discovery started...");
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}
@@ -58,6 +59,10 @@ public enum ServiceProviderUtil {
 	}
 
 	return address;
+    }
+    
+    public static void main(String[] args) {
+	System.out.println(ServiceProviderUtil.instance.getServiceAddress("worker")); 
     }
 
 }
