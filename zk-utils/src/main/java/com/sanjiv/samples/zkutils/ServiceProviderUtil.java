@@ -10,6 +10,9 @@ import org.apache.curator.x.discovery.ServiceDiscovery;
 import org.apache.curator.x.discovery.ServiceDiscoveryBuilder;
 import org.apache.curator.x.discovery.ServiceProvider;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public enum ServiceProviderUtil {
     instance;
 
@@ -58,11 +61,13 @@ public enum ServiceProviderUtil {
 	    e.printStackTrace();
 	}
 
+	log.debug("address: {}", address);
 	return address;
     }
     
     public static void main(String[] args) {
 	System.out.println(ServiceProviderUtil.instance.getServiceAddress("worker")); 
+	System.out.println(ServiceProviderUtil.instance.getServiceAddress("worker"));
     }
 
 }

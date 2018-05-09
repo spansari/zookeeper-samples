@@ -7,6 +7,9 @@ import org.apache.curator.x.discovery.ServiceDiscoveryBuilder;
 import org.apache.curator.x.discovery.ServiceInstance;
 import org.apache.curator.x.discovery.UriSpec;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public enum ServiceRegistryUtil {
     instance;
 
@@ -26,6 +29,7 @@ public enum ServiceRegistryUtil {
     }
 
     public void register(String serviceName, String serviceHost, int servicePort) {
+	log.debug("inside register()...");
 	ServiceInstance<Object> serviceInstance;
 	try {
 	    serviceInstance = ServiceInstance.<Object>builder()
