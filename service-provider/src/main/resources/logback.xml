@@ -32,26 +32,44 @@
 
 	</appender>
 
-	<appender name="FILE-ERROR"
+	<appender name="iAPI"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${DEV_HOME}/error.log</file>
+		<file>logs/iapi.log</file>
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-			<Pattern>
-				%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+			<Pattern>@type=iapi.log|@timestamp=%d{yyyy-MM-dd'T'HH:mm:ss.SSS'Z'}{UTC}|%msg|@fields.ClientVersion=${CLIENT_VERSION}|@fields.LogLevel=%level|@fields.Logger=%logger{35}|@fields.ActivityName=%n
 			</Pattern>
 		</encoder>
 
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- rollover daily -->
-			<fileNamePattern>logs/server.log.%d{yyyy-MM-dd}.%i.log
+			<fileNamePattern>logs/iapi.log.%d{yyyy-MM-dd}.%i.log
                         </fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy
 				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 				<maxFileSize>10MB</maxFileSize>
 			</timeBasedFileNamingAndTriggeringPolicy>
 		</rollingPolicy>
-
 	</appender>
+	
+	<appender name="iAPI-Metrics"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>logs/iapi-metrics.log</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>@type=iapi.metrics|@timestamp=%d{yyyy-MM-dd'T'HH:mm:ss.SSS'Z'}{UTC}|@source_host=%X{HostName}|@message=%msg*^*@fields.ClientVersion=${CLIENT_VERSION}|@fields.LogLevel=%level|@fields.Logger=%logger{35}|@fields.IPAddress=%X{IPAddress}|@fields.Division=%X{Division}|@fields.Fob=%X{Fob}|@fields.Group=%X{Group}|@fields.Subgroup=%X{Subgroup}|@fields.AppID=%X{AppID}|@fields.AppName=%X{AppName}|@fields.DataCenter=%X{DataCenter}|@fields.EngineName=${EngineName}|@fields.ComponentName=%X{ComponentName}|@fields.NonHeapUsed=%X{nonHeapUsed}|@fields.NonHeapCommitted=%X{nonHeapCommitted}|@fields.HeapUsed=%X{heapUsed}|@fields.HeapCommitted=%X{heapCommitted}|@fields.GcCountPSScavenge=%X{GcCountPS Scavenge}|@fields.GcTimeMillisPSScavenge=%X{GcTimeMillisPS Scavenge}|@fields.GcCountPSMarkSweep=%X{GcCountPS MarkSweep}|@fields.GcTimeMillisPSMarkSweep=%X{GcTimeMillisPS MarkSweep}|@fields.GcCount=%X{gcCount}|@fields.GcTimeMillis=%X{gcTimeMillis}|@fields.ThreadsNew=%X{threadsNew}|@fields.ThreadsRunnable=%X{threadsRunnable}|@fields.ThreadsBlocked=%X{threadsBlocked}|@fields.ThreadsWaiting=%X{threadsWaiting}|@fields.ThreadsTimedWaiting=%X{threadsTimedWaiting}|@fields.ThreadsTerminated=%X{threadsTerminated}|@fields.OsProcessors=%X{osProcessors}|@fields.OsSystemLoadAverage=%X{osSystemLoadAverage}%n
+			</Pattern>
+		</encoder>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- rollover daily -->
+			<fileNamePattern>logs/iapi-metrics.log.%d{yyyy-MM-dd}.%i.log
+                        </fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	</appender>
+	
 	
 	<!-- Send logs to both console and file audit -->
 	<logger name="com.sanjiv" level="debug"
@@ -62,6 +80,8 @@
 
 	<root level="info">
 		<appender-ref ref="STDOUT" />
+		<appender-ref ref="iAPI" />
+		<appender-ref ref="iAPI-Metrics" />
 	</root>
 
 </configuration>
