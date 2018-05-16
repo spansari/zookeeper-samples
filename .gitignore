@@ -4,7 +4,7 @@
 *.ear
 *.class
 **/dependency-reduced-pom.xml
-logs/**
+*logs*
 # eclipse specific git ignore
 *.pydevproject
 .project

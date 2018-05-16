@@ -70,6 +70,23 @@
   
 	<dependencyManagement>
 		<dependencies>
+
+            <dependency>
+                <groupId>io.dropwizard.metrics</groupId>
+                <artifactId>metrics-core</artifactId>
+                <version>3.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>io.dropwizard.metrics</groupId>
+                <artifactId>metrics-jersey2</artifactId>
+                <version>3.1.0</version>
+            </dependency>
+			<dependency>
+				<groupId>org.hawkular.metrics</groupId>
+				<artifactId>hawkular-dropwizard-reporter</artifactId>
+				<version>0.1.1</version>
+			</dependency>
+
 			<dependency>
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
